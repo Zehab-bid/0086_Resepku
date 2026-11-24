@@ -76,6 +76,21 @@ Server berjalan di `http://localhost:3000`. Uji dengan membuka `backend/requests
 
 ---
 
+## 4. Progress Mingguan (Weekly Progress)
+
+Berikut adalah linimasa pengembangan proyek ResepKu yang direkonstruksi secara riil berdasarkan riwayat git commit:
+
+### 🗓️ Minggu 1 (24 November 2026)
+
+- **Inisialisasi & Setup Lingkungan** ( `52b4dab` , `17a151f` , `3dc9d5e` ): Inisialisasi struktur direktori proyek, konfigurasi `.gitignore`, inisialisasi backend Express.js, konfigurasi koneksi pool MySQL 2, integrasi version catalog Android (`libs.versions.toml`), dan perizinan akses jaringan (`INTERNET` serta `usesCleartextTraffic`).
+- **Perancangan Basis Data & Seeder** ( `e6bb9ea` , `faa8b8b` ): Desain skema basis data menyeluruh (`schema.sql`) mencakup relasi tabel `users`, `categories`, `recipes`, `ingredients`, `collections`, `collection_recipes`, dan `refresh_tokens`, implementasi script seeder (`seed.js`) akun admin dan 5 kategori default, serta penyusunan berkas uji coba request HTTP (`requests.http`).
+- **Layanan Autentikasi & Otorisasi Backend** ( `f8f02b0` , `0d86191` , `8f84e11` ): Implementasi endpoint registrasi pengguna dengan enkripsi password `bcrypt`, endpoint login dengan penerbitan token ganda (Access Token JWT 15 menit & Refresh Token 7 hari), endpoint refresh token, pembatalan sesi via endpoint logout, endpoint proteksi profil pengguna (`/auth/me`), serta middleware verifikasi JWT (`verifyToken`) dan proteksi hak akses (`requireRole('admin')`).
+- **Lapisan Jaringan & Penyimpanan Sesi Android** ( `99c19fd` , `3919641` ): Integrasi `RetrofitClient` berbasis OkHttp dan Gson Converter, perancangan DTO request/response, pengelolaan token persisten dengan `DataStore Preferences` (`TokenManager`), serta pembuatan `AuthInterceptor` (injeksi otomatis header Bearer) dan `TokenAuthenticator` (penanganan error 401 dan auto-refresh token tanpa memutus alur pengguna).
+- **Antarmuka & Pengelolaan State Autentikasi** ( `52b004b` , `a8a905d` , `865297b` , `650ad0d` ): Penerapan tema Material 3 warna oranye-krem bertema kuliner, pemisahan logika validasi input formulir pada utility `Validator`, perancangan arsitektur MVVM dengan `AuthViewModel` berbasis `StateFlow` dan `AuthUiState`, pembuatan antarmuka `LoginScreen` dengan toggle visibilitas password, antarmuka `RegisterScreen` dengan pesan error real-time per field, serta penyesuaian konfigurasi workspace IDE.
+- **Navigasi & Dasbor Placeholder** ( `c14983f` , `39922fd` ): Implementasi navigasi deklaratif menggunakan Navigation Compose (`AppNavGraph`) dengan penentuan rute awal dinamis berdasarkan ketersediaan token aktif, pembuatan antarmuka `HomeScreen` placeholder berfitur informasi sapaan nama pengguna, badge peran akun, tombol aksi logout, dan pembaruan dokumentasi linimasa proyek.
+
+---
+
 ## Status Fitur
 
 | Fitur | Status | Minggu |
