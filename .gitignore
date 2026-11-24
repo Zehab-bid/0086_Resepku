@@ -8,22 +8,16 @@ yarn-debug.log*
 yarn-error.log*
 
 # ===========================
-# Android / Gradle
+# Android / Gradle — hanya folder build/cache, bukan source
 # ===========================
-.gradle/
-build/
-local.properties
+android/.gradle/
+android/build/
+android/app/build/
+android/local.properties
+android/.idea/
+android/.kotlin/
 *.iml
-.cxx/
-
-# ===========================
-# IDE
-# ===========================
-.idea/
-*.iws
-*.ipr
-*.swp
-*~
+*.cxx/
 
 # ===========================
 # OS
