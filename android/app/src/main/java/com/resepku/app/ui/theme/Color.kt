@@ -2,10 +2,22 @@ package com.resepku.app.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
-val Purple80 = Color(0xFFD0BCFF)
-val PurpleGrey80 = Color(0xFFCCC2DC)
-val Pink80 = Color(0xFFEFB8C8)
+// ===== Palet warna bertema masakan (oranye/krem) =====
 
-val Purple40 = Color(0xFF6650a4)
-val PurpleGrey40 = Color(0xFF625b71)
-val Pink40 = Color(0xFF7D5260)
+// Oranye utama — warna aksi dan navigasi
+val OrangeMain    = Color(0xFFE65100)   // oranye tua
+val OrangeLight   = Color(0xFFFF8A65)  // oranye muda (container)
+val OrangeDark    = Color(0xFFBF360C)  // oranye sangat tua
+
+// Krem/coklat — warna sekunder
+val CreamMain     = Color(0xFF795548)  // coklat krem
+val CreamLight    = Color(0xFFD7CCC8)  // krem muda
+val CreamDark     = Color(0xFF4E342E)  // krem tua
+
+// Background & surface — warna dapur yang hangat
+val BackgroundWarm = Color(0xFFFFF8F3) // putih krem
+val SurfaceWarm    = Color(0xFFFFF3E0) // krem permukaan
+
+// Error
+val ErrorRed       = Color(0xFFB00020)
+val ErrorRedLight  = Color(0xFFFFDAD6)
