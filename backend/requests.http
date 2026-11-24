@@ -1,0 +1,145 @@
+### ResepKu API - Contoh Request
+### Gunakan ekstensi "REST Client" di VS Code untuk menjalankan file ini
+### Atau gunakan Thunder Client / Insomnia / Postman
+
+@base = http://localhost:3000
+@contentType = application/json
+
+### ============================================================
+### Health Check
+### ============================================================
+
+# @name healthCheck
+GET {{base}}/
+Content-Type: {{contentType}}
+
+###
+
+### ============================================================
+### POST /auth/register  - Daftar akun baru
+### ============================================================
+
+# @name register
+POST {{base}}/auth/register
+Content-Type: {{contentType}}
+
+{
+  "nama": "Budi Santoso",
+  "email": "budi@example.com",
+  "password": "password123"
+}
+
+###
+
+### Register dengan data tidak valid (password < 8 karakter)
+POST {{base}}/auth/register
+Content-Type: {{contentType}}
+
+{
+  "nama": "Test User",
+  "email": "test@example.com",
+  "password": "123"
+}
+
+###
+
+### Register dengan email duplikat
+POST {{base}}/auth/register
+Content-Type: {{contentType}}
+
+{
+  "nama": "Budi Lagi",
+  "email": "budi@example.com",
+  "password": "password123"
+}
+
+###
+
+### ============================================================
+### POST /auth/login  - Login dan dapat token
+### ============================================================
+
+# @name login
+POST {{base}}/auth/login
+Content-Type: {{contentType}}
+
+{
+  "email": "budi@example.com",
+  "password": "password123"
+}
+
+###
+
+### Login sebagai admin (akun seed)
+# @name loginAdmin
+POST {{base}}/auth/login
+Content-Type: {{contentType}}
+
+{
+  "email": "admin@resepku.com",
+  "password": "Admin123"
+}
+
+###
+
+### Login dengan password salah
+POST {{base}}/auth/login
+Content-Type: {{contentType}}
+
+{
+  "email": "budi@example.com",
+  "password": "salah123"
+}
+
+###
+
+### ============================================================
+### POST /auth/refresh  - Perbarui access token
+### Isi @refreshToken dari response login di atas
+### ============================================================
+
+@refreshToken = GANTI_DENGAN_REFRESH_TOKEN_DARI_LOGIN
+
+# @name refreshToken
+POST {{base}}/auth/refresh
+Content-Type: {{contentType}}
+
+{
+  "refreshToken": "{{refreshToken}}"
+}
+
+###
+
+### ============================================================
+### GET /auth/me  - Info user saat ini (butuh access token)
+### Isi @accessToken dari response login
+### ============================================================
+
+@accessToken = GANTI_DENGAN_ACCESS_TOKEN_DARI_LOGIN
+
+# @name getMe
+GET {{base}}/auth/me
+Content-Type: {{contentType}}
+Authorization: Bearer {{accessToken}}
+
+###
+
+### GET /auth/me tanpa token (harus 401)
+GET {{base}}/auth/me
+Content-Type: {{contentType}}
+
+###
+
+### ============================================================
+### POST /auth/logout  - Hapus refresh token
+### ============================================================
+
+# @name logout
+POST {{base}}/auth/logout
+Content-Type: {{contentType}}
+
+{
+  "refreshToken": "{{refreshToken}}"
+}
+
+###
